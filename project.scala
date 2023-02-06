@@ -3,4 +3,4 @@
 //> using lib "org.scalameta::mdoc:2.3.7+2-f2af9b9a-SNAPSHOT"
 //> using lib "org.planet42::laika-core:0.19.0"
 //> using lib "org.planet42::laika-io:0.19.0"
-//> using lib "works.scala::scala-cmd:0.0.1"
+//> using lib "works.scala::scala-cmd:0.0.2"

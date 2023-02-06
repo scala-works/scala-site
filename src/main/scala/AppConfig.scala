@@ -1,18 +1,19 @@
 import scala.io.Source
 import scala.util.*
 import laika.config.*
+import scala.util.Using.Manager.Resource
+import java.io.File
 
-// Laike has a SiteConfig, so this should be refactored
-final case class SiteConfig(configPath: String):
+final case class AppConfig(configPath: String):
 
-  // This needs to be a Try/Either
   lazy val hocon: Config =
+    new File(configPath).createNewFile()
     Using.resource(Source.fromFile(configPath)) { buff =>
       ConfigParser
         .parse(buff.mkString)
         .resolve()
-        .getOrElse(SiteConfig.emptyConfig)
+        .getOrElse(AppConfig.emptyConfig)
     }
 
-object SiteConfig:
+object AppConfig:
   val emptyConfig: Config = ConfigBuilder.empty.build
